@@ -64,19 +64,16 @@
         '';
       }
 
-      # cmp
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-path
-      cmp-cmdline
-      luasnip
-      cmp_luasnip
+      lspkind-nvim
+      blink-cmp
+      blink-pairs # (doesn't really work well yet, too lazy to debug rn but it's mostly fine)
 
       none-ls-nvim
 
       # themes
       dracula-nvim
       catppuccin-nvim
+      transparent-nvim
 
       # other plugins
       {
@@ -97,10 +94,6 @@
       }
       {
         plugin = nvim-web-devicons;
-      }
-      {
-        plugin = nvim-autopairs;
-        config = "lua << END\nrequire('nvim-autopairs').setup{}\nEND";
       }
       {
         plugin = vim-pencil;

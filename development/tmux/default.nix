@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -6,13 +10,14 @@
     baseIndex = 1;
     mouse = false;
     keyMode = "vi";
-    terminal = "screen-256color";
     sensibleOnTop = true;
-    extraConfig = builtins.readFile ./extra.conf;
+    extraConfig = lib.concatMapStringsSep "\n" builtins.readFile [
+      ./extra.conf
+    ];
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = dracula;
-        extraConfig = builtins.readFile ./dracula.conf;
+        plugin = minimal-tmux-status;
+        extraConfig = builtins.readFile ./status.conf;
       }
     ];
   };

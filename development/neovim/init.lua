@@ -14,7 +14,73 @@ vim.o.winborder = "single"
 vim.opt.mouse = ""
 
 -- Colorscheme
+require("transparent").setup({
+    extra_groups = {
+        "NormalFloat",
+        "NvimTreeNormal",
+        "Pmenu",
+        "BlinkCmpLabel",
+        "BlinkCmpLabelMatch",
+    },
+})
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.api.nvim_set_hl(0, "PmenuSel", {
+            bg = "#282a36", -- formerly background
+            bold = true,
+        })
+        vim.api.nvim_set_hl(0, "BlinkPairsYellow", { fg = "#FFFF00" })
+        vim.api.nvim_set_hl(0, "BlinkPairsPurple", { fg = "#FF00FF" })
+        vim.api.nvim_set_hl(0, "BlinkPairsCyan", { fg = "#00FFFF" })
+    end,
+})
 vim.cmd.colorscheme("dracula")
+
+-- Autopairs
+require("blink.pairs").setup({
+    mappings = {
+        enabled = true,
+        cmdline = true,
+        disabled_filetypes = {},
+        -- https://github.com/Saghen/blink.pairs/blob/main/lua/blink/pairs/config/mappings.lua#L14
+        pairs = {
+            ["<"] = {
+                {
+                    "<",
+                    ">",
+                    when = function(ctx)
+                        return ctx.ts:whitelist("angle").matches
+                    end,
+                    languages = { "rust", "typescript" },
+                },
+            },
+        },
+    },
+    highlights = {
+        enabled = true,
+        -- requires require('vim._extui').enable({}), otherwise has no effect
+        cmdline = true,
+        groups = {
+            "BlinkPairsYellow",
+            "BlinkPairsPurple",
+            "BlinkPairsCyan",
+        },
+        unmatched_group = "BlinkPairsUnmatched",
+
+        -- highlights matching pairs under the cursor
+        matchparen = {
+            enabled = true,
+            -- known issue where typing won't update matchparen highlight, disabled by default
+            cmdline = false,
+            -- also include pairs not on top of the cursor, but surrounding the cursor
+            include_surrounding = false,
+            group = "BlinkPairsMatchParen",
+            priority = 250,
+        },
+    },
+    debug = false,
+})
 
 -- Markdown-specific settings
 vim.api.nvim_create_autocmd("FileType", {

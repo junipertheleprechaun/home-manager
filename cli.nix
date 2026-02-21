@@ -10,7 +10,7 @@
     unzip
     file
     ssh-import-id
-    ffmpeg
+    ffmpeg-full
     dig
     openssl
     binutils

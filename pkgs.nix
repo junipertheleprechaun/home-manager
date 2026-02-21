@@ -35,7 +35,6 @@
     unzip
     file
     ssh-import-id
-    ffmpeg
     dig
     openssl
     binutils
@@ -54,6 +53,9 @@
     ntfs3g
     exfatprogs
     iotop
+    cadaver
+
+    npins
   ];
   programs.chromium.enable = true;
 }

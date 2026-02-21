@@ -6,7 +6,7 @@
       ./pkgs.nix
       ./xdg
       ./games
-      ./nas-mount.nix
+      ./cli.nix
     ]
     ++ (lib.optional (builtins.pathExists ./local) ./local);
 

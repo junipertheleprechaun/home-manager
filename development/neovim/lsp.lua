@@ -122,24 +122,64 @@ vim.lsp.config("lua_ls", {
     },
 })
 
--- Autocompletion
-local cmp = require("cmp")
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+-- Autocompletion with blink.cmp
+require("blink.cmp").setup({
+    keymap = {
+        preset = "default",
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+    },
+
+    sources = {
+        default = { "lsp", "path", "snippets" },
+    },
+
+    snippets = {
+        expand = function(snippet)
+            require("luasnip").lsp_expand(snippet)
         end,
     },
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "path" },
-    }),
-    mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    }),
+    completion = {
+        documentation = { auto_show = true },
+        menu = {
+            draw = {
+                components = {
+                    kind_icon = {
+                        text = function(ctx)
+                            local icon = ctx.kind_icon
+                            if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                                if dev_icon then
+                                    icon = dev_icon
+                                end
+                            else
+                                icon = require("lspkind").symbolic(ctx.kind, {
+                                    mode = "symbol",
+                                })
+                            end
+
+                            return icon .. ctx.icon_gap
+                        end,
+
+                        -- Optionally, use the highlight groups from nvim-web-devicons
+                        -- You can also add the same function for `kind.highlight` if you want to
+                        -- keep the highlight groups in sync with the icons.
+                        highlight = function(ctx)
+                            local hl = ctx.kind_hl
+                            if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                                if dev_icon then
+                                    hl = dev_hl
+                                end
+                            end
+                            return hl
+                        end,
+                    },
+                },
+            },
+        },
+    },
 })
 
 -- Formatter / Linter via none-ls

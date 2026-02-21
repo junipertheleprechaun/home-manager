@@ -38,10 +38,11 @@
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
+      push.autoSetupRemote = "true";
     };
     signing = {
       signByDefault = true;
-      key = "key::sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMPSsEEEa4Rk9rt1taRQLNO5uCKEACraTiGHUDQeSUSpAAAABHNzaDo= ssh:";
+      key = "~/.ssh/main_key.pub";
     };
   };
 }
