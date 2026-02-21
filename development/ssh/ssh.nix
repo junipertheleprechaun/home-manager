@@ -58,7 +58,7 @@ in {
       ControlMaster = "auto";
       ControlPath = "~/.ssh/control/%h:%r";
       ControlPersist = "10m";
-      IdentityAgent = "~/.ssh/ssh_auth_sock";
+      IdentityFile = "~/.ssh/main_key.pub";
     };
   };
   home.file.".ssh/control/.keep".text = "can't create a directory without creating a file :/";
