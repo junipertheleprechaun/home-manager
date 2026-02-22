@@ -54,7 +54,6 @@ in {
     };
     extraOptionOverrides = {
       EnableEscapeCommandline = "true";
-      AddKeysToAgent = "yes";
       ControlMaster = "auto";
       ControlPath = "~/.ssh/control/%h:%r";
       ControlPersist = "10m";
