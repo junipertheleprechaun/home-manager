@@ -14,6 +14,7 @@
       "rm" = "trash";
       "ls" = "ls --color";
     };
+    historyControl = ["ignoreboth"];
   };
 
   home.packages = with pkgs; [
