@@ -1,9 +1,10 @@
 {
   pkgs,
   config,
-  unstable,
   ...
-}: {
+}: let
+  unstable = import ../../unstable.nix;
+in {
   home.packages = with pkgs; [
     glib
     gvfs
@@ -64,9 +65,14 @@
         '';
       }
 
+      # cmp
       lspkind-nvim
-      blink-cmp
-      blink-pairs # (doesn't really work well yet, too lazy to debug rn but it's mostly fine)
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-path
+      cmp-cmdline
+      luasnip
+      cmp_luasnip
 
       none-ls-nvim
 
@@ -91,6 +97,16 @@
           ${builtins.readFile ./tree.lua}
           END
         '';
+      }
+      {
+        plugin = nvim-autopairs;
+        config = ''
+          lua << END
+          -- nvim-autopairs setup + hook into cmp
+          require("nvim-autopairs").setup({ check_ts = true })
+          local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+          END'';
       }
       {
         plugin = nvim-web-devicons;

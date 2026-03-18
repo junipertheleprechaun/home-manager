@@ -18,6 +18,10 @@ in {
         user = "user";
         port = 2222;
       };
+      "leopard.steam" = {
+        hostname = "leopard";
+        user = "steam";
+      };
       "leopard.local" = {
         hostname = "leopard";
         user = "juniper";

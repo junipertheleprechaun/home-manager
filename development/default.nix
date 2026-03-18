@@ -1,9 +1,15 @@
 {
   config,
   pkgs,
-  unstable,
   ...
-}: {
+}: let
+  sources = import ../npins;
+  unstable = import sources.unstable {
+    config = {
+      allowUnfree = true;
+    };
+  };
+in {
   imports = [
     ./aws.nix
     ./shell

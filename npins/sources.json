@@ -1,0 +1,57 @@
+{
+  "pins": {
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "release-25.11",
+      "submodules": false,
+      "revision": "1f8f9e001235652cf54f9c1f7983f9c0e920944a",
+      "url": "https://github.com/nix-community/home-manager/archive/1f8f9e001235652cf54f9c1f7983f9c0e920944a.tar.gz",
+      "hash": "08knslvn7a8vv6mcf5075zv1fjr0hblih13rf7c0ih8d9lh7zxcw"
+    },
+    "nixpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-25.11",
+      "submodules": false,
+      "revision": "e9f278faa1d0c2fc835bd331d4666b59b505a410",
+      "url": "https://github.com/NixOS/nixpkgs/archive/e9f278faa1d0c2fc835bd331d4666b59b505a410.tar.gz",
+      "hash": "0rljgmbyyqk9y2nx3y4ak6y8cr0kj8awrcr2dfwgw5g57kpkjsr6"
+    },
+    "nur": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "NUR"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "4254ece081a7300d39b534f70958b261f6e586cb",
+      "url": "https://github.com/nix-community/NUR/archive/4254ece081a7300d39b534f70958b261f6e586cb.tar.gz",
+      "hash": "175ksfimsrh7bxhmrczhhlri7avmwqs7lfvpww2p9fmy1b36pmpl"
+    },
+    "unstable": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-unstable",
+      "submodules": false,
+      "revision": "c06b4ae3d6599a672a6210b7021d699c351eebda",
+      "url": "https://github.com/NixOS/nixpkgs/archive/c06b4ae3d6599a672a6210b7021d699c351eebda.tar.gz",
+      "hash": "0fgmdh1j6qrx64wq8wk2hry2rjh3rkvz9pch29l8zn49nlndvxy2"
+    }
+  },
+  "version": 5
+}

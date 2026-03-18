@@ -1,8 +1,6 @@
-{
-  nur,
-  unstable,
-  ...
-}: let
+{...}: let
+  nur = import ../nur.nix;
+  unstable = import ../unstable.nix;
 in {
   programs.firefox = {
     enable = true;

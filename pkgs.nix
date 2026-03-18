@@ -48,6 +48,7 @@
     iperf3
     btrfs-progs
     yubikey-manager
+    ncdu
 
     # Other shit
     ntfs3g
