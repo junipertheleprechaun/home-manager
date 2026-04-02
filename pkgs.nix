@@ -24,6 +24,7 @@
     audacity
     evince
     mumble
+    vlc
 
     # CLI packages
     speedtest-cli

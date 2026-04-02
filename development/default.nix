@@ -22,6 +22,7 @@ in {
 
   home.packages = with pkgs; [
     unstable.uv
+    distrobox
 
     nodePackages.aws-cdk
     nodePackages.http-server
