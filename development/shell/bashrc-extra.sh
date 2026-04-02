@@ -24,13 +24,18 @@ function set_prompt {
     else
         PRE_PROMPT="${ERROR_CAT}  ${ERROR_MOUSE}${FORMAT_NONE}"
     fi
+    if [[ -n "$IN_NIX_SHELL" ]]; then
+        PRE_PROMPT+=" ${COLOR_GREY}(nix shell)${FORMAT_NONE}"
+    fi
+    if [[ -n "$DIRENV_DIR" ]]; then
+        PRE_PROMPT+=" ${COLOR_GREY}(direnv)"
+    fi
+    if [[ -n "$CONTAINER_ID" ]]; then
+        PRE_PROMPT+="${COLOR_GREY} (container: ${CONTAINER_ID})${FORMAT_NONE}"
+    fi
     PROMPT="${TEXT_BOLD}${COLOR_GREEN}[\u@\h:\w]${COLOR_BLUE}${GIT_PROMPT}${COLOR_GREEN} \$${FORMAT_NONE} "
 
-    if [[ -n "$IN_NIX_SHELL" ]]; then
-        export PS1="${PRE_PROMPT} ${COLOR_GREY}(nix shell) \n${PROMPT}"
-    else
-        export PS1="${PRE_PROMPT}\n${PROMPT}"
-    fi
+    export PS1="${PRE_PROMPT}\n${PROMPT}"
 }
 
 # move the auth sock to .ssh for persistence across sessions
