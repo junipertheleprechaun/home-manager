@@ -10,7 +10,7 @@ in {
     enableDefaultConfig = false;
     matchBlocks = hostMap {
       "nas" = {
-        hostname = "tart";
+        hostname = "tart.lan";
         user = "nas-admin";
       };
       "vm.local" = {
@@ -19,11 +19,11 @@ in {
         port = 2222;
       };
       "leopard.steam" = {
-        hostname = "leopard";
+        hostname = "leopard.lan";
         user = "steam";
       };
       "leopard.local" = {
-        hostname = "leopard";
+        hostname = "leopard.lan";
         user = "juniper";
       };
       "leopard.remote" = {
@@ -32,11 +32,11 @@ in {
         user = "juniper";
       };
       "tart.local" = {
-        hostname = "tart";
+        hostname = "tart.lan";
         user = "juniper";
       };
       "tart.remote" = {
-        hostname = "tart-remote";
+        hostname = "tart.van-pogona.ts.net";
         port = 22;
         user = "juniper";
       };
