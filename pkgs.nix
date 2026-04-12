@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  unstable = import ./unstable.nix;
+in {
   home.packages = with pkgs; [
     # GNOME extensions
     gnomeExtensions.dash-to-dock
@@ -14,7 +16,6 @@
     yubioath-flutter
     zoom-us
     gimp
-    chromium
     vlc
     orca-slicer
     super-slicer
@@ -59,5 +60,8 @@
 
     npins
   ];
-  programs.chromium.enable = true;
+  programs.chromium = {
+    enable = true;
+    package = unstable.chromium;
+  };
 }
