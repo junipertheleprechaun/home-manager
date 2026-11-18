@@ -9,6 +9,7 @@ in {
     # GNOME extensions
     gnomeExtensions.dash-to-dock
     gnomeExtensions.appindicator
+    jdk25
 
     # Graphical applications
     mumble
@@ -39,7 +40,6 @@ in {
     ssh-import-id
     dig
     openssl
-    binutils
     jq
     trash-cli
     rclone

@@ -13,7 +13,6 @@
     ffmpeg-full
     dig
     openssl
-    binutils
     jq
     trash-cli
     lsof

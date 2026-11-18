@@ -12,6 +12,19 @@ vim.lsp.enable({
     "eslint",
     "pyright",
     "rust_analyzer",
+    "arduino_language_server",
+})
+vim.lsp.config("arduino_language_server", {
+    cmd = {
+        "arduino-language-server",
+        "-clangd",
+        vim.fn.exepath("clangd"),
+        "-cli-config",
+        vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+        "-fqbn",
+        "arduino:avr:leonardo",
+    },
+    filetypes = { "arduino" },
 })
 local null_ls = require("null-ls")
 local sources = {

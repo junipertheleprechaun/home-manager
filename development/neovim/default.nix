@@ -21,6 +21,8 @@ in {
     yaml-language-server
     pyright
     rust-analyzer
+    arduino-language-server
+    clang-tools
 
     # Formatting
     prettierd

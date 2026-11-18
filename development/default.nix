@@ -28,11 +28,12 @@ in {
     nodePackages.http-server
     python3
     python311Packages.pip
-    jdk21
+    #jdk21
     sshfs
     glib
     android-tools
     scrcpy
+    arduino-cli
 
     jq
   ];

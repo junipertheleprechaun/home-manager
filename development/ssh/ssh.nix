@@ -10,8 +10,13 @@ in {
     enableDefaultConfig = false;
     matchBlocks = hostMap {
       "nas" = {
-        hostname = "tart.lan";
+        hostname = "tart";
         user = "nas-admin";
+      };
+      "jimbaloothy" = {
+        hostname = "bastion.zyte.space";
+        "user" = "admin";
+        port = 2322;
       };
       "vm.local" = {
         hostname = "localhost";

@@ -10,8 +10,8 @@
     ]
     ++ (lib.optional (builtins.pathExists ./local) ./local);
 
-  home.username = "john";
-  home.homeDirectory = "/home/john";
+  home.username = "juniper";
+  home.homeDirectory = "/home/juniper";
 
   programs.home-manager.enable = false;
 
